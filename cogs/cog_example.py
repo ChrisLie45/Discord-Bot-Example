@@ -10,7 +10,7 @@ class CogExample(commands.Cog):
     # This command will be loaded as apart of the cog category
     # A command is defined by the @commands.command() decorator above a function
     @commands.command()
-    async def ping(self, ctx: Context):
+    async def ping(self, ctx: Context) -> None:
         """Ping command to test response time of the bot"""
 
         # Latency is in seconds, so we multiply by 1000 to get milliseconds

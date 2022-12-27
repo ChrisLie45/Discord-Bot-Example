@@ -2,9 +2,7 @@ import discord
 from discord.ext import commands
 import os 
 
-SYNC_COMMANDS = False # Whether to sync slash commands on startup
-BOT_TOKEN = "" # Your bot token
-GUILD_ID = 0; # Your guild ID
+BOT_TOKEN = os.environ.get("DISCORD_TOKEN") # Your bot token
 
 class MyClient(commands.Bot):
     def __init__(self, **options):
@@ -18,15 +16,6 @@ class MyClient(commands.Bot):
 
         print("Loading extensions...")
         await self.load_cogs()
-
-        if SYNC_COMMANDS:
-            print("Syncing slash commands...")
-
-            # Sync slash commands to the guild
-            # To sync to all guilds, remove the guild parameter or set it to None
-            guild = discord.Object(id=GUILD_ID)
-            synced_commands = self.tree.copy_global_to(guild=guild)
-            print("Slash commands synced: " + str(synced_commands))
 
 
     # on_message is called whenever a message is sent in a channel that the bot can see

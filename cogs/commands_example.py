@@ -1,13 +1,14 @@
 from discord.ext import commands
 from discord.ext.commands import Context
 
+# Basic prefix commands with arguments example 
 class CommandsExample(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
     
     @commands.command()
-    async def args(self, ctx: Context, arg1, arg2):
+    async def args(self, ctx: Context, arg1, arg2) -> None:
         """
         Command with arguments
         
@@ -19,7 +20,7 @@ class CommandsExample(commands.Cog):
     
 
     @commands.command()
-    async def args_optional(self, ctx: Context, arg1=None):
+    async def args_optional(self, ctx: Context, arg1=None) -> None:
         """
         Command with optional arguments
         
@@ -34,7 +35,7 @@ class CommandsExample(commands.Cog):
     
 
     @commands.command()
-    async def args_variable(self, ctx: Context, *args):
+    async def args_variable(self, ctx: Context, *args) -> None:
         """
         Command with variable amount of arguments
         
@@ -48,7 +49,7 @@ class CommandsExample(commands.Cog):
 
     # This command will throw an error if the user does not provide a number as the second argument
     @commands.command()
-    async def args_type(self, ctx: Context, arg1: str, arg2: int):
+    async def args_type(self, ctx: Context, arg1: str, arg2: int) -> None:
         """
         Command with argument type conversion
         

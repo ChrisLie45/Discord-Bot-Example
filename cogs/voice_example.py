@@ -3,14 +3,13 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Context
 
-
 class VoiceExample(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
 
     @commands.command()
-    async def join(self, ctx: Context):
+    async def join(self, ctx: Context) -> None:
         """Joins the voice channel the user is currently in"""
 
         # Check if the user is in a voice channel
@@ -30,9 +29,10 @@ class VoiceExample(commands.Cog):
         else:
             await ctx.author.voice.channel.connect()
     
+    
     # Must have ffmpeg installed and added to PATH environment variable
     @commands.command()
-    async def play(self, ctx: Context):
+    async def play(self, ctx: Context) -> None:
         """Plays a sound file in the voice channel the bot is currently in"""
 
         # join the voice channel if the bot is not already in one
@@ -56,7 +56,7 @@ class VoiceExample(commands.Cog):
 
 
     @commands.command()
-    async def leave(self, ctx: Context):
+    async def leave(self, ctx: Context) -> None:
         """Leaves the voice channel the bot is currently in"""
 
         # Check if the bot is in a voice channel
