@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 import os 
 
-BOT_TOKEN = os.environ.get("DISCORD_TOKEN") # Your bot token
+BOT_TOKEN = os.environ.get("DISCORD_TOKEN")
+# BOT_TOKEN = "YOUR_TOKEN_HERE"
 
 class MyClient(commands.Bot):
     def __init__(self, **options):
