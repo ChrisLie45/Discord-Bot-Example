@@ -20,6 +20,7 @@ class CommandErrorHandler(commands.Cog):
         error: commands.CommandError
             The Exception raised.
         """
+
         # This prevents any commands with local handlers being handled here in on_command_error.
         if hasattr(ctx.command, 'on_error'):
             return
@@ -30,7 +31,7 @@ class CommandErrorHandler(commands.Cog):
             if cog._get_overridden_method(cog.cog_command_error) is not None:
                 return
 
-        ignored = (commands.CommandNotFound, )
+        ignored = ()
 
         # Allows us to check for original exceptions raised and sent to CommandInvokeError.
         # If nothing is found. We keep the exception passed to on_command_error.
@@ -39,8 +40,11 @@ class CommandErrorHandler(commands.Cog):
         # Anything in ignored will return and prevent anything happening.
         if isinstance(error, ignored):
             return
+        
+        if isinstance(error, commands.CommandNotFound):
+            await ctx.send('Command not found')
 
-        if isinstance(error, commands.DisabledCommand):
+        elif isinstance(error, commands.DisabledCommand):
             await ctx.send(f'{ctx.command} has been disabled.')
 
         elif isinstance(error, commands.NoPrivateMessage):
@@ -53,7 +57,7 @@ class CommandErrorHandler(commands.Cog):
             await ctx.send('Pass in all required arguments')
         
         elif isinstance(error, commands.ConversionError):
-            await ctx.send('Invalid argument')
+            await ctx.send('Invalid argument type')
 
         # For this error example we check to see where it came from...
         elif isinstance(error, commands.BadArgument):

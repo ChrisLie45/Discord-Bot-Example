@@ -34,7 +34,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. Install the dependencies
 `pip install -r requirements.txt`
 
-3. Replace `YOUR_TOKEN_HERE` in `bot.py` with your Discord API token
+3. Replace `YOUR_TOKEN_HERE` in `bot.py` with your Discord API token. Alternatively, you can also uncomment `BOT_TOKEN = os.environ.get("DISCORD_TOKEN")` above and use that to initialize your token if you have an environment variable setup. 
 
 4. Run the bot
 `python bot.py`

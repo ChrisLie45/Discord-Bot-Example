@@ -59,6 +59,29 @@ class CommandsExample(commands.Cog):
 
         await ctx.send(f"arg1 is str = {type(arg1) is str}")
         await ctx.send(f"arg2 is int = {type(arg2) is int}")
+    
+
+    @commands.command(name="commandalias")
+    async def command_alias(self, ctx: Context) -> None:
+        """
+        Command with an alias
+        
+        Usage: 
+        commandalias
+        """
+
+        await ctx.send("This is the command alias")
+    
+    @commands.command(aliases=["commandaliases", "ca"])
+    async def command_aliases(self, ctx: Context) -> None:
+        """
+        Command with multiple aliases
+        
+        Usage: 
+        command_aliases, ca or commandaliases
+        """
+
+        await ctx.send("This is the command alias with multiple aliases")
 
 
 async def setup(bot):

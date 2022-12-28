@@ -98,6 +98,7 @@ class RandomExamples(commands.Cog):
         await message.add_reaction("1️⃣")
         await message.add_reaction("2️⃣")
     
+
     @commands.hybrid_command()
     async def calculator(self, ctx: Context, num1: int, operator: str, num2: int) -> None: 
         """Basic Calculator
@@ -122,7 +123,7 @@ class RandomExamples(commands.Cog):
             result = num1 * num2
         elif operator == "/":
             result = num1 / num2
-            round(result, 2)
+            result = round(result, 2)
 
         await ctx.send(f"{num1} {operator} {num2} = {result}")
 
